@@ -45,7 +45,7 @@ public class EditUser extends HttpServlet {
             }
             req.setAttribute("userId", userId);
             req.getRequestDispatcher("/WEB-INF/jsp/editUser.jsp").forward(req, resp);
-        }else{
+        } else {
             resp.sendRedirect(req.getContextPath() + "/userTable.jhtml");
 
         }
@@ -87,7 +87,7 @@ public class EditUser extends HttpServlet {
         String login = req.getParameter("newLogin");
         String password = req.getParameter("newPassword");
         List<String> role = new ArrayList<>();
-        if(req.getParameterValues("userRole")!=null) {
+        if (req.getParameterValues("userRole") != null) {
             role = Arrays.asList(req.getParameterValues("userRole"));
         }
         String email = req.getParameter("newEmail");
@@ -103,7 +103,7 @@ public class EditUser extends HttpServlet {
 
             if (userId == session.getAttribute("idLoggedInUser")) {
                 session.setAttribute("login", login);
-                session.setAttribute("role", role);
+                //session.setAttribute("role", role);
             }
             if (user != null) {
                 User editUser = new User(userId, login, password, role, dob, email);
