@@ -86,7 +86,10 @@ public class EditUser extends HttpServlet {
         }
         String login = req.getParameter("newLogin");
         String password = req.getParameter("newPassword");
-        List<String> role = Arrays.asList(req.getParameterValues("userRole"));
+        List<String> role = new ArrayList<>();
+        if(req.getParameterValues("userRole")!=null) {
+            role = Arrays.asList(req.getParameterValues("userRole"));
+        }
         String email = req.getParameter("newEmail");
         String dob = req.getParameter("newDob");
 

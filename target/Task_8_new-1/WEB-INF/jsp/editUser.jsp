@@ -56,15 +56,35 @@
             <div class="select <c:if test="${failedRole}"> failedEdit</c:if>">
                 <span>Роль:</span>
                 <label for="isRoot">Root</label>
-                <input type="checkbox" id = "isRoot" name = "userRole" value="1" class="checkbox">
+                <input type="checkbox" id = "isRoot" name = "userRole" value="1" class="checkbox"
+                <c:forEach var="role" items="${user.role}">
+                        ${role}
+                   <c:if test="${role=='root'}"> checked="checked"</c:if>
+                </c:forEach>>
                 <label for="isUser">User</label>
-                <input type="checkbox" id = "isUser" name = "userRole" value="2" class="checkbox">
+                <input type="checkbox" id = "isUser" name = "userRole" value="2" class="checkbox"
+                <c:forEach var="role" items="${user.role}">
+                    ${role}
+                <c:if test="${role=='user'}"> checked="checked"</c:if>
+                </c:forEach>>
                 <label for="isManager">Manager</label>
-                <input type="checkbox" id = "isManager" name = "userRole" value="3" class="checkbox">
+                <input type="checkbox" id = "isManager" name = "userRole" value="3" class="checkbox"
+                <c:forEach var="role" items="${user.role}">
+                    ${role}
+                <c:if test="${role=='manager'}"> checked="checked"</c:if>
+                </c:forEach>>
                 <label for="isDeveloper">Developer</label>
-                <input type="checkbox" id="isDeveloper" name="userRole" value="4" class="checkbox">
+                <input type="checkbox" id="isDeveloper" name="userRole" value="4" class="checkbox"
+                <c:forEach var="role" items="${user.role}">
+                    ${role}
+                <c:if test="${role=='developer '}"> checked="checked"</c:if>
+                </c:forEach>>
                 <label for="isSeo">Seo</label>
-                <input type="checkbox" id="isSeo" name="userRole" value="5" class="checkbox">
+                <input type="checkbox" id="isSeo" name="userRole" value="5" class="checkbox"
+                <c:forEach var="role" items="${user.role}">
+                    ${role}
+                <c:if test="${role=='seo'}"> checked="checked"</c:if>
+                </c:forEach>>
 
             <%--                <select name="newRole" id="role">--%>
 <%--                    <option disabled selected>Выберите роль:</option>--%>

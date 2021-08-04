@@ -16,9 +16,9 @@ public class InMemoryUserDao implements UserDao {
 
     @Override
     public void create(User user) throws SQLException {
-    String request = "INSERT INTO users(login, password, name, dob)\n" +
-            "VALUES(?, ?, ?, ?)";
-    PreparedStatement preparedStatement = connection.prepareStatement(request);
+        String request = "INSERT INTO users(login, password, name, dob)\n" +
+                "VALUES(?, ?, ?, ?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(request);
         preparedStatement.setString(1, user.getLogin());
         preparedStatement.setString(2, user.getPassword());
         preparedStatement.setString(3, user.getEmail());
@@ -37,7 +37,7 @@ public class InMemoryUserDao implements UserDao {
     }
 
     @Override
-    public void update(User user) throws SQLException{
+    public void update(User user) throws SQLException {
         String request = "UPDATE users SET login = ?, password = ?, name = ?, dob = ? WHERE id = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(request);
         preparedStatement.setString(1, user.getLogin());
@@ -115,15 +115,16 @@ public class InMemoryUserDao implements UserDao {
 
     @Override
     public void createRole(User user) throws SQLException {
+        if (user.getRole().size() != 0) {
+            String addRole = "INSERT INTO users_roles(user_id, role_id)\n" +
+                    "VALUES(?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(addRole);
+            for (int i = 0; i < user.getRole().size(); i++) {
 
-        String addRole = "INSERT INTO users_roles(user_id, role_id)\n"+
-                "VALUES(?, ?)";
-        PreparedStatement preparedStatement = connection.prepareStatement(addRole);
-        for (int i = 0; i < user.getRole().size(); i++){
-
-            preparedStatement.setInt(1, user.getId());
-            preparedStatement.setInt(2, Integer.parseInt(user.getRole().get(i)));
-            preparedStatement.executeUpdate();
+                preparedStatement.setInt(1, user.getId());
+                preparedStatement.setInt(2, Integer.parseInt(user.getRole().get(i)));
+                preparedStatement.executeUpdate();
+            }
         }
 
     }
