@@ -1,0 +1,15 @@
+web\servlet\EditUser.class
+web\servlet\Logout.class
+dao\data\UserStorage.class
+service\AdminServiceImpl.class
+web\servlet\DeleteUser.class
+web\servlet\Login.class
+web\filter\Authorization.class
+web\servlet\Welcome.class
+dao\UserDao.class
+dao\InMemoryUserDao.class
+web\servlet\UserTable.class
+web\filter\Access.class
+web\servlet\Validator.class
+service\AdminService.class
+domain\User.class

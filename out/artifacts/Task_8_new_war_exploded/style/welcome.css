@@ -1,0 +1,35 @@
+html, body {
+    display: flex;
+    justify-content: center;
+}
+
+.content > img {
+    width: 500px;
+    height: 600px;
+    margin-left: 50px;
+}
+
+
+.content > .rectWithText {
+    position: absolute;
+    width: 413px;
+    height: 280px;
+    left: 749px;
+    top: 187px;
+    background: #E1D6F8;
+    box-shadow: 25px -25px rgba(225, 214, 248, 0.24);
+}
+
+.content > .rectWithText > span {
+
+    font-family: 'system-ui', serif;
+    font-weight: 200;
+    font-size: 34px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-top: 10px;
+    /*text-indent: 10px;*/
+    color: #FFFFFF;
+
+}
