@@ -1,15 +1,18 @@
-D:\Practice\Task_8_new — êîïèÿ\src\main\java\web\servlet\Validator.java
-D:\Practice\Task_8_new — êîïèÿ\src\main\java\web\servlet\UserTable.java
-D:\Practice\Task_8_new — êîïèÿ\src\main\java\dao\data\UserStorage.java
-D:\Practice\Task_8_new — êîïèÿ\src\main\java\domain\User.java
-D:\Practice\Task_8_new — êîïèÿ\src\main\java\web\filter\Authorization.java
-D:\Practice\Task_8_new — êîïèÿ\src\main\java\service\AdminServiceImpl.java
-D:\Practice\Task_8_new — êîïèÿ\src\main\java\dao\InMemoryUserDao.java
-D:\Practice\Task_8_new — êîïèÿ\src\main\java\dao\UserDao.java
-D:\Practice\Task_8_new — êîïèÿ\src\main\java\web\servlet\DeleteUser.java
-D:\Practice\Task_8_new — êîïèÿ\src\main\java\web\filter\Access.java
-D:\Practice\Task_8_new — êîïèÿ\src\main\java\web\servlet\Welcome.java
-D:\Practice\Task_8_new — êîïèÿ\src\main\java\web\servlet\Logout.java
-D:\Practice\Task_8_new — êîïèÿ\src\main\java\service\AdminService.java
-D:\Practice\Task_8_new — êîïèÿ\src\main\java\web\servlet\Login.java
-D:\Practice\Task_8_new — êîïèÿ\src\main\java\web\servlet\EditUser.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\web\servlet\Welcome.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\web\servlet\Login.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\dao\UserDao.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\service\AdminService.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\web\filter\Authorization.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\dao\InMemoryUserDao.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\web\servlet\EditUser.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\web\filter\Access.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\web\servlet\DeleteUser.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\domain\User.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\web\servlet\Validator.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\task8.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\web\servlet\Logout.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\dao\data\UserStorage.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\service\ServiceFactory.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\service\AdminServiceImpl.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\web\servlet\UserTable.java
+D:\Practice\Task_8_newâ€”ĞºĞ¾Ğ¿Ğ¸Ñ\src\main\java\task8\domain\Role.java

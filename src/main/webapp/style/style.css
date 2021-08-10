@@ -19,8 +19,8 @@ html, body {
     margin: 0;
     background-color: white;
     width: 986px;
-    min-height: 100%;
     box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.12);
+    min-height: 104%;
 }
 
 button {
