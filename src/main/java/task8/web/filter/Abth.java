@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "Authorization")
-public class Authorization implements Filter {
+@WebFilter(filterName = "Abth", urlPatterns = {"/^.css", "*", "*.jhtml"})
+public class Abth implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 

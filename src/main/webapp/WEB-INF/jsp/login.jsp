@@ -12,9 +12,9 @@
 <html>
 <head>
     <title>Вход</title>
-    <c:url var="style" value="/style"/>
-    <link href="${style}/login.css" rel="stylesheet" type="text/css">
-    <link href="${style}/style.css" rel="stylesheet" type="text/css">
+    <c:url var="style" value="/"/>
+    <link href="${style}style/login.css" rel="stylesheet" type="text/css">
+    <link href="${style}style/style.css" rel="stylesheet" type="text/css">
     <c:if test="${param.authFailed}">
         <link href="${pageContext.servletContext.contextPath}/style/failedField.css" rel="stylesheet" type="text/css">
     </c:if>

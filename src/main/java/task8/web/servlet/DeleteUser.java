@@ -1,8 +1,8 @@
 package task8.web.servlet;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import task8.service.AdminService;
-import task8.service.ServiceFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +14,8 @@ import java.io.IOException;
 
 @WebServlet("/deleteUser.jhtml")
 public class DeleteUser extends HttpServlet {
-   private AdminService adminService = ServiceFactory.getInstance().getService();
+    @Autowired
+    private AdminService adminService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

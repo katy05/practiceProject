@@ -1,5 +1,6 @@
 package task8.dao;
 
+import org.springframework.stereotype.Repository;
 import task8.storage.UserStorage;
 import task8.domain.User;
 
@@ -8,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+@Repository
 public class InMemoryUserDao implements UserDao {
 
     private UserStorage userStorage = UserStorage.getInstance();

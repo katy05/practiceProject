@@ -3,8 +3,14 @@ spring:
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/authorization_role_MM
+    username: postgres
+    password: root
 
 server:
   servlet:
     session:
       tracking-modes: cookie
+
+

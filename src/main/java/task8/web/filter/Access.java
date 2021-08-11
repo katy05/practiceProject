@@ -1,12 +1,9 @@
 package task8.web.filter;
 
-
-
-
+import org.springframework.beans.factory.annotation.Autowired;
 import task8.dao.InMemoryUserDao;
 import task8.dao.UserDao;
 import task8.service.AdminService;
-import task8.service.ServiceFactory;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -18,6 +15,7 @@ import java.io.IOException;
 @WebFilter(filterName = "Access")
 public class Access implements Filter {
 
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -27,7 +25,8 @@ public class Access implements Filter {
     public void destroy() {
 
     }
-    private AdminService adminService = ServiceFactory.getInstance().getService();
+
+
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {

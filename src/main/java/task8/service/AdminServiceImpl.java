@@ -1,5 +1,7 @@
 package task8.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import task8.dao.InMemoryUserDao;
 import task8.dao.UserDao;
 import task8.domain.User;
@@ -9,21 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class AdminServiceImpl implements AdminService {
-    private static AdminServiceImpl instance;
-
-
-    private AdminServiceImpl() {
-    }
-
-    public static AdminServiceImpl getInstance() {
-        if (instance == null) {
-            instance = new AdminServiceImpl();
-        }
-        return instance;
-    }
-
-    private UserDao userDao = new InMemoryUserDao();
+    @Autowired
+    private UserDao userDao;
 
     @Override
     public void create(User user) throws SQLException {

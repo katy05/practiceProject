@@ -1,9 +1,9 @@
 package task8.web.servlet;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import task8.domain.User;
 import task8.service.AdminService;
-import task8.service.ServiceFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +19,8 @@ import java.util.List;
 
 @WebServlet("/editUser.jhtml")
 public class EditUser extends HttpServlet {
-    private AdminService adminService = ServiceFactory.getInstance().getService();
+    @Autowired
+    private AdminService adminService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
