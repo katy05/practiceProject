@@ -1,0 +1,98 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="task8.dao.UserDao">
+    <resultMap id="userResult" type="User">
+        <id property="id" column="id"/>
+        <result property="login" column="login"/>
+        <result property="password" column="password"/>
+        <result property="email" column="name"/>
+        <result property="dob" column="dob"/>
+        <collection property="roles" ofType="Role" resultMap="rolesUser"/>
+    </resultMap>
+    <resultMap id="rolesUser" type="Role">
+        <result property="id" column="id"/>
+        <result property="name" column="role_name"/>
+    </resultMap>
+
+
+    <select id="findAll" resultType="User" resultMap="userResult">
+        select u.id, u.login, u.password, u.name, u.dob, r.id, r.role_name
+        from users u
+                 left join users_roles ur on u.id = ur.user_id
+                 left join roles r on r.id = ur.role_id
+    </select>
+
+    <select id="read" resultType="User" resultMap="userResult">
+        select u.id, u.login, u.password, u.name, u.dob, r.id, r.role_name
+        from users u
+                 left join users_roles ur on u.id = ur.user_id
+                 left join roles r on r.id = ur.role_id
+        where u.id = #{id}
+    </select>
+
+    <select id="findByLoginAndPassword" resultType="User" resultMap="userResult">
+        select u.id, u.login, u.name, u.dob, r.id, r.role_name
+        from users u
+                 left join users_roles ur on u.id = ur.user_id
+                 left join roles r on r.id = ur.role_id
+        where u.login = #{login}
+          and u.password = #{password}
+    </select>
+
+    <select id="findUserRole" resultType="Role" resultMap="rolesUser">
+        select role_name
+        from roles
+                 left join users_roles ur on roles.id = ur.role_id
+        where ur.user_id = #{id}
+    </select>
+
+    <select id="findByLogin" resultType="User" resultMap="userResult">
+        select *
+        from users
+        where login = #{login}
+    </select>
+    <select id="readNumberOfRoles" resultType="int">
+        select count(#{id})
+        from roles
+    </select>
+
+    <select id="readMaxId" resultType="int">
+        select max(id)
+        from users
+    </select>
+
+    <insert id="create">
+        insert into users
+        values (DEFAULT, #{login}, #{password}, #{email}, #{dob})
+    </insert>
+
+    <delete id="delete">
+        delete
+        from users
+        where id = #{id}
+    </delete>
+
+    <delete id="deleteRole">
+        delete
+        from users_roles
+        where user_id = #{id}
+    </delete>
+
+    <insert id="createRole">
+        insert
+        into users_roles values
+        <foreach collection="roles" item="role" separator=",">
+            (DEFAULT, #{user_id}, #{role.id})
+        </foreach>
+    </insert>
+
+    <update id="update">
+        update users
+        set login    = #{login},
+            password = #{password},
+            name     = #{email},
+            dob      = #{dob}
+        where id = #{id}
+    </update>
+
+</mapper>

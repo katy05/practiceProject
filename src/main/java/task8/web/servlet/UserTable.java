@@ -1,6 +1,7 @@
 package task8.web.servlet;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import task8.dao.UserDao;
 import task8.service.AdminService;
 
 import javax.servlet.ServletException;
@@ -26,9 +27,5 @@ public class UserTable extends HttpServlet {
         req.getRequestDispatcher("/WEB-INF/jsp/userTable.jsp").forward(req, resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/jsp/userTable.jsp").forward(req, resp);
-    }
 
 }

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "Abth", urlPatterns = {"/^.css", "*", "*.jhtml"})
+@WebFilter(filterName = "Abth", urlPatterns = "*.jhtml")
 public class Abth implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -31,8 +31,15 @@ public class Abth implements Filter {
         String loginURI = req.getContextPath() + "/auth.jhtml";
         boolean isLoginPage = req.getRequestURI().equals(loginURI);
         boolean userIsLogged = session != null && session.getAttribute("login") != null;
+
+
         if (isLoginPage || userIsLogged) {
+//            if (req.getRequestURI().matches(".*[css|jpg|png|gif|js].*")) {
+//                filterChain.doFilter(req, resp);
+//                return;
+//            }
             filterChain.doFilter(req, resp);
+
         } else {
             resp.sendRedirect(loginURI);
         }

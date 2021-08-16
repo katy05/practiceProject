@@ -1,5 +1,6 @@
 package task8.service;
 
+import task8.domain.Role;
 import task8.domain.User;
 
 import java.sql.ResultSet;
@@ -13,14 +14,12 @@ public interface AdminService {
 
     void update(User user) throws SQLException;
 
-    void delete(int id);
+    void delete(int id) throws SQLException;
 
     List<User> findAll() throws SQLException;
 
     User checkLoginAndPassword(String login, String password) throws SQLException;
 
     Integer readMaxId() throws SQLException;
-
-    List<String> readUserRole(int id) throws SQLException;
 
 }

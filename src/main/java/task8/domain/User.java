@@ -6,21 +6,32 @@ public class User {
     private Integer id;
     private String login;
     private String password;
-    private List<String> role;
+    private List<Role> roles;
     private String dob;
     private String email;
 
+
+    public User() {
+    }
 
     public User(String login, String password) {
         this.login = login;
         this.password = password;
     }
 
-    public User(Integer id, String login, String password, List<String> role, String dob, String email) {
+    public User(Integer id, String login, String password, List<Role> roles, String dob, String email) {
         this.id = id;
         this.login = login;
         this.password = password;
-        this.role = role;
+        this.roles = roles;
+        this.dob = dob;
+        this.email = email;
+    }
+
+    public User( String login, String password, List<Role> roles, String dob, String email) {
+        this.login = login;
+        this.password = password;
+        this.roles = roles;
         this.dob = dob;
         this.email = email;
     }
@@ -49,12 +60,12 @@ public class User {
         this.password = password;
     }
 
-    public List<String> getRole() {
-        return role;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(List<String> role) {
-        this.role = role;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     public String getDob() {

@@ -47,10 +47,9 @@ public class Login extends HttpServlet {
         }
         if (user != null) {
             session.setAttribute("login", login);
-            session.setAttribute("role", user.getRole());
-           // session.setAttribute("isRoot", user.isRoot());
+            session.setAttribute("roles", user.getRoles());
+            //session.setAttribute("isRoot", user.isRoot());
             session.setAttribute("idLoggedInUser", user.getId());
-
             resp.sendRedirect(req.getContextPath() + "/welcome.jhtml");
         } else {
             session.setAttribute("failedLogin", req.getParameter("login"));

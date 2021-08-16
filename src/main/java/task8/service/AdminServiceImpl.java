@@ -2,9 +2,10 @@ package task8.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import task8.dao.InMemoryUserDao;
 import task8.dao.UserDao;
+import task8.domain.Role;
 import task8.domain.User;
+//import task8.storage.ConnectMyBatis;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,131 +14,52 @@ import java.util.List;
 
 @Service
 public class AdminServiceImpl implements AdminService {
+//    private SqlSession sqlSession = ConnectMyBatis.getSqlSession();
+
     @Autowired
     private UserDao userDao;
 
     @Override
     public void create(User user) throws SQLException {
         userDao.create(user);
-        userDao.deleteRole(user);
-        userDao.createRole(user);
+        // userDao.deleteRole(user);
+        userDao.createRole(userDao.findByLogin(user.getLogin()).getId(), user.getRoles());
     }
 
     @Override
     public User read(int id) throws SQLException {
-        ResultSet resultSet = userDao.read(id);
-        String name;
-        String password;
-        String login;
-        String dob;
-        ArrayList<String> role = new ArrayList<>();
-        User user;
-        resultSet.next();
-        name = resultSet.getString("name");
-        password = resultSet.getString("password");
-        login = resultSet.getString("login");
-        dob = resultSet.getString("dob");
-        ResultSet resultSetRoles = userDao.findUserRole(id);
-        while (resultSetRoles.next()) {
-            role.add(resultSetRoles.getString("role_name"));
-        }
-        user = new User(id, name, password, role, dob, login);
-        userDao.read(user.getId());
-
-
-        return user;
+        return userDao.read(id);
     }
 
     @Override
-    public void update(User user) throws SQLException{
+    public void update(User user) throws SQLException {
         userDao.update(user);
-        userDao.deleteRole(user);
-        userDao.createRole(user);
-
+        userDao.deleteRole(user.getId());
+        userDao.createRole(userDao.findByLogin(user.getLogin()).getId(), user.getRoles());
     }
 
     @Override
-    public void delete(int id) {
-        try {
-            userDao.delete(id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void delete(int id) throws SQLException {
+        userDao.deleteRole(id);
+        userDao.delete(id);
+
     }
 
     @Override
     public List<User> findAll() throws SQLException {
-        ResultSet resultSet = userDao.findAll();
-        int id;
-        String name;
-        String password;
-        String login;
-        String dob;
-        ArrayList<User> users = new ArrayList<>();
-        User user;
-        while (resultSet.next()) {
-            id = resultSet.getInt("id");
-            name = resultSet.getString("name");
-            password = resultSet.getString("password");
-            login = resultSet.getString("login");
-            dob = resultSet.getString("dob");
-            ArrayList<String> role = new ArrayList<>();
-            ResultSet resultSetRoles = userDao.findUserRole(id);
-            while (resultSetRoles.next()) {
-                role.add(resultSetRoles.getString("role_name"));
-            }
-            user = new User(id, name, password, role, dob, login);
-            users.add(user);
-
-        }
-        return users;
+        return userDao.findAll();
     }
 
     @Override
     public User checkLoginAndPassword(String login, String password) throws SQLException {
-        ResultSet resultSet = userDao.findByLoginAndPassword(login, password);
-        User user = null;
-        if(resultSet != null){
-            while (resultSet.next()){
-                int id;
-                String name;
-                String dob;
-                ArrayList<String> role = new ArrayList<>();
-                id = resultSet.getInt("id");
-                name = resultSet.getString("name");
-                dob = resultSet.getString("dob");
-//                role.add("root");
-                                ResultSet resultSetRoles = userDao.findUserRole(id);
-                while (resultSetRoles.next()) {
-                    role.add(resultSetRoles.getString("role_name"));
-                }
-                user = new User(id, name, password, role, dob, login);
-            }
-        }
-    return user;
+        return userDao.findByLoginAndPassword(login, password);
     }
 
 
     @Override
     public Integer readMaxId() throws SQLException {
-        ResultSet resultSet = userDao.readMaxId();
-        resultSet.next();
-        return resultSet.getInt(1);
+        return userDao.readMaxId();
     }
 
-    @Override
-    public List<String> readUserRole(int id) throws SQLException {
-        ResultSet resultSet = userDao.findUserRole(id);
-        resultSet.next();
-        ResultSet numberOfRoles = userDao.readNumberOfRoles();
-        numberOfRoles.next();
-        ArrayList<String> userRole = new ArrayList<>();
-        for (int i = 1; i <= numberOfRoles.getInt(1); i++) {
-            if (resultSet.getString(i) != null) {
-                userRole.add(resultSet.getString(i));
-            }
-        }
-        return userRole;
-    }
 
 }

@@ -2,6 +2,7 @@ package task8.web.servlet;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import task8.domain.Role;
 import task8.domain.User;
 import task8.service.AdminService;
 
@@ -49,7 +50,6 @@ public class EditUser extends HttpServlet {
 
         }
 
-
     }
 
     @Override
@@ -85,16 +85,17 @@ public class EditUser extends HttpServlet {
         }
         String login = req.getParameter("newLogin");
         String password = req.getParameter("newPassword");
-        List<String> role = new ArrayList<>();
-        if (req.getParameterValues("userRole") != null) {
-            role = Arrays.asList(req.getParameterValues("userRole"));
+        String[] roles = req.getParameterValues("userRole");
+        List<Role> userRoles = new ArrayList<>();
+        if (roles != null) {
+            Arrays.stream(roles).forEach(role-> userRoles.add(new Role(Integer.parseInt(role))));
         }
         String email = req.getParameter("newEmail");
         String dob = req.getParameter("newDob");
 
         password = password.trim();
 
-        User newUser = new User(userId, login, password, role, dob, email);
+        User newUser = new User(userId, login, password, userRoles, dob, email);
         req.setAttribute("user", newUser);
 
         if (Validator.validEmail(email) && Validator.validLogin(login)
@@ -105,7 +106,7 @@ public class EditUser extends HttpServlet {
                 //session.setAttribute("role", role);
             }
             if (user != null) {
-                User editUser = new User(userId, login, password, role, dob, email);
+                User editUser = new User(userId, login, password, userRoles, dob, email);
                 try {
                     adminService.update(editUser);
                 } catch (SQLException e) {
@@ -113,10 +114,10 @@ public class EditUser extends HttpServlet {
                 }
                 user.setLogin(login);
                 user.setPassword(password);
-                user.setRole(role);
+                user.setRoles(userRoles);
                 user.setEmail(email);
             } else {
-                User addUser = new User(userId, login, password, role, dob, email);
+                User addUser = new User(userId, login, password, userRoles, dob, email);
                 try {
                     adminService.create(addUser);
                 } catch (SQLException e) {
