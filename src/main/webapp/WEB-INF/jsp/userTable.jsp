@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="myTag" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -18,14 +19,17 @@
 <c:url var="deleteUser" value="/deleteUser.jhtml"/>
 <c:url var="contextPath" value="/style"/>
 
+<fmt:setLocale value="${lang}"/>
+<fmt:setBundle basename="lang.messages"/>
 <head>
-    <title>Таблица пользователей</title>
+    <title><fmt:message key="label.add.user"/></title>
     <link href="${contextPath}/userTable.css" rel="stylesheet" type="text/css">
     <link href="${contextPath}/style.css" rel="stylesheet" type="text/css">
 
 
 </head>
 <body>
+
 <div class="main">
 
     <myTag:header
@@ -35,16 +39,16 @@
     />
     <div class="content">
         <form method="get" action="${editUser}">
-            <button type="submit">Добавить пользователя</button>
+            <button type="submit"><fmt:message key="label.add.user"/></button>
             <table class="userTable">
-                <caption>Список пользователей</caption>
+                <caption><fmt:message key="label.users.list"/></caption>
                 <thead>
                 <tr>
-                    <th>Логин</th>
-                    <th>Пароль</th>
-                    <th>Роль</th>
-                    <th>Email</th>
-                    <th>День рождения</th>
+                    <th><fmt:message key="label.login"/></th>
+                    <th><fmt:message key="label.password"/></th>
+                    <th><fmt:message key="label.role"/></th>
+                    <th><fmt:message key="label.email"/></th>
+                    <th><fmt:message key="label.dob"/></th>
                     <th></th>
                 </tr>
                 </thead>

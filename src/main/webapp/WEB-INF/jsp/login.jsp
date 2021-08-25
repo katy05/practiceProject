@@ -15,7 +15,7 @@
 <fmt:setBundle basename="lang.messages"/>
 <html>
 <head>
-    <title>Вход</title>
+    <title><fmt:message key="label.welcome"/></title>
     <c:url var="style" value="/"/>
     <link href="${style}style/login.css" rel="stylesheet" type="text/css">
     <link href="${style}style/style.css" rel="stylesheet" type="text/css">
@@ -23,6 +23,8 @@
     <link href="${pageContext.servletContext.contextPath}/style/failedField.css" rel="stylesheet" type="text/css">
     <%--    </c:if>--%>
 </head>
+<fmt:message key="label.login" var="i18nLogin"/>
+<fmt:message key="label.password" var="i18nPassword"/>
 <body>
 <div class="session">
     <div class="left">
@@ -35,9 +37,9 @@
     <form:form method="post" action="${auth}" class="log-in" autocomplete="off" modelAttribute="incomingUser">
         <h4><fmt:message key="label.welcome"/></h4>
         <div class="floating-label">
-            <form:input name="login" placeholder="Логин" id="login" autocomplete="off" value="${failedLogin}"
+            <form:input name="login" placeholder="${i18nLogin}" id="login" autocomplete="off" value="${failedLogin}"
                         path="login" cssErrorClass="inputFailed"/>
-            <label for="login">Логин:</label>
+            <label for="login"><fmt:message key="label.login"/>: </label>
             <form:errors path="login" cssClass="failedText"/>
 
             <div class="icon">
@@ -58,9 +60,9 @@
             </div>
         </div>
         <div class="floating-label">
-            <form:input placeholder="Пароль" type="password" name="password" id="password" autocomplete="off"
+            <form:input placeholder="${i18nPassword}" type="password" name="password" id="password" autocomplete="off"
                         path="password" cssErrorClass="inputFailed"/>
-            <label for="password">Пароль:</label>
+            <label for="password"><fmt:message key="label.password"/>:</label>
             <form:errors path="password" cssClass="failedText"/>
 
             <div class="icon">
@@ -81,13 +83,13 @@
         <%--        <div style="display: none" class="failedText">--%>
         <%--            Неправильный логин или пароль--%>
         <%--        </div>--%>
-        <button type="submit">Войти</button>
+        <button type="submit"><fmt:message key="label.sign.in"/></button>
     </form:form>
 
 
 </div>
 
-<div class="languages">
+<div class="languages" style="position: absolute">
     <a href="?lang=ru"><fmt:message key="label.lang.ru"/> </a>
     <a href="?lang=en"><fmt:message key="label.lang.en"/> </a>
 </div>

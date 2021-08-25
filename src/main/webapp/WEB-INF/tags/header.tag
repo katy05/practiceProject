@@ -6,21 +6,23 @@
 <c:url var="welcome" value="/welcome.jhtml"/>
 <c:url var="userTable" value="/userTable.jhtml"/>
 <c:url var="logout" value="/logout.jhtml"/>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${lang}"/>
+<fmt:setBundle basename="lang.messages"/>
 <header>
     <span class="logo">Rina</span>
-
     <div class="menu">
-        <a href="${welcome}" id="<c:out value="${thisIsHomePage}"/>">Главная</a>
+        <a href="${welcome}" id="<c:out value="${thisIsHomePage}"/>"><fmt:message key="label.main"/> </a>
         <c:forEach var="role" items="${roles}">
-        <c:if test="${role.name == 'root'}">
-        <a href="${userTable}" id="<c:out value="${thisIsUserTablePage}"/>">Список пользователей</a>
-        </c:if>
+            <c:if test="${role.name == 'root'}">
+                <a href="${userTable}" id="<c:out value="${thisIsUserTablePage}"/>"><fmt:message
+                        key="label.users.list"/> </a>
+            </c:if>
         </c:forEach>
     </div>
 
-        <form method="get" action="${logout}" style="padding: 0">
-            <button type="submit" class="buttonLogout">Выйти</button>
-        </form>
+    <form method="get" action="${logout}" style="padding: 0">
+        <button type="submit" class="buttonLogout"><fmt:message key="label.sing.up"/></button>
+    </form>
 </header>
 

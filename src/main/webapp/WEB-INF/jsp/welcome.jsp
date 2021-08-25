@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="myTag" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -11,15 +12,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:url var="userTable" value="/userTable.jhtml"/>
 <c:url var="logout" value="/logout.jhtml"/>
+
 <html>
+<fmt:setLocale value="${lang}"/>
+<fmt:setBundle basename="lang.messages"/>
 <head>
-    <title>Главная</title>
+    <title><fmt:message key="label.main"/></title>
     <link href="${pageContext.servletContext.contextPath}/style/welcome.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.servletContext.contextPath}/style/style.css" rel="stylesheet" type="text/css">
 
 
 </head>
+
+
 <body>
+
 <div class="main">
     <%--    <c:set var="thisIsHomePage" value="selectedMenuItem" scope="request"/>--%>
     <%--    <c:set var="thisIsUserListPage" value="" scope="request"/>--%>
@@ -37,9 +44,8 @@
 
                 ${login},
 
-                    <c:forEach var="role" items="${roles}">${role.name} </c:forEach> добро пожаловать.
-            </span>
-            <span>Сейчас ты находишься на самой безполезной странице с красивой картинкой</span>
+                    <c:forEach var="role" items="${roles}">${role.name} </c:forEach>
+            <fmt:message key="label.welcome.text"/> </span>
         </div>
     </div>
 
