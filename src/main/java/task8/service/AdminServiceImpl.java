@@ -3,13 +3,10 @@ package task8.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import task8.dao.UserDao;
-import task8.domain.Role;
 import task8.domain.User;
 //import task8.storage.ConnectMyBatis;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

@@ -1,9 +1,7 @@
 package task8.service;
 
-import task8.domain.Role;
 import task8.domain.User;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 

@@ -11,7 +11,25 @@ html, body {
 .checkbox{
     appearance: auto !important;
     height: 15px;
-    margin-right: 20px;
-    margin-left: 5px;
+    margin: 0!important;
+    width: 140px;
+}
 
+.select > span > label{
+    display: block;
+    margin-top: -15px;
+
+}
+
+.select > span{
+    padding-bottom: 15px;
+}
+
+.select > span > input{
+    margin-left: 10px;
+}
+
+checkboxes{
+    display: flex;
+    flex-direction: column;
 }

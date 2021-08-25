@@ -14,6 +14,7 @@ html, body {
 }
 
 .main {
+    position: absolute;
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -136,4 +137,17 @@ a {
 
 input:invalid {
     border-bottom: 1px solid red;
+}
+
+.inputError{
+    border-bottom: 1px solid red;
+}
+
+.languages{
+    position: absolute;
+    float: right;
+    padding: 10px;
+}
+.languages > a{
+    padding: 0 5px;
 }
