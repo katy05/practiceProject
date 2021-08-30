@@ -51,19 +51,19 @@ public class Role {
 
     public Role(String name) {
         this.name = name;
-        if (name.equals("root")) {
+        if (name.equals("ROLE_ROOT")) {
             this.id = 1;
         }
-        if (name.equals("user")) {
+        if (name.equals("ROLE_USER")) {
             this.id = 2;
         }
-        if (name.equals("manager")) {
+        if (name.equals("ROLE_MANAGER")) {
             this.id = 3;
         }
-        if (name.equals("developer")) {
+        if (name.equals("ROLE_DEVELOPER")) {
             this.id = 4;
         }
-        if (name.equals("seo")) {
+        if (name.equals("ROLE_SEO")) {
             this.id = 5;
         }
     }

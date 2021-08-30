@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebFilter(filterName = "Access", urlPatterns = "*.jhtml")
+//@WebFilter(filterName = "Access", urlPatterns = "*.jhtml")
 public class Access implements Filter {
 
     @Autowired

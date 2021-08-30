@@ -1,6 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="myTag" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 
 <%--
   Created by IntelliJ IDEA.
@@ -21,6 +24,8 @@
 
 <fmt:setLocale value="${lang}"/>
 <fmt:setBundle basename="lang.messages"/>
+<sec:authentication property="principal" var="authUser"/>
+
 <head>
     <title><fmt:message key="label.add.user"/></title>
     <link href="${contextPath}/userTable.css" rel="stylesheet" type="text/css">
@@ -35,20 +40,20 @@
     <myTag:header
             thisIsHomePage="false"
             thisIsUserTablePage="selectedMenuItem"
-            roles="${role}"
+            roles="${authUser.authorities}"
     />
     <div class="content">
         <form method="get" action="${editUser}">
-            <button type="submit"><fmt:message key="label.add.user"/></button>
+            <button type="submit"><spring:message code="label.add.user"/></button>
             <table class="userTable">
-                <caption><fmt:message key="label.users.list"/></caption>
+                <caption><spring:message code="label.users.list"/></caption>
                 <thead>
                 <tr>
-                    <th><fmt:message key="label.login"/></th>
-                    <th><fmt:message key="label.password"/></th>
-                    <th><fmt:message key="label.role"/></th>
-                    <th><fmt:message key="label.email"/></th>
-                    <th><fmt:message key="label.dob"/></th>
+                    <th><spring:message code="label.login"/></th>
+<%--                    <th><fmt:message key="label.password"/></th>--%>
+                    <th><spring:message code="label.role"/></th>
+                    <th><spring:message code="label.email"/></th>
+                    <th><spring:message code="label.dob"/></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -61,7 +66,7 @@
                         <td><a href="${editUser}?userId=${user.id}"
                                class="tdLogin">${user.login}</a>
                         </td>
-                        <td>${user.password}</td>
+<%--                        <td>${user.password}</td>--%>
                         <td><c:forEach var="role" items="${user.roles}">${role.name} </c:forEach></td>
                         <td>${user.email}</td>
                         <td>${user.dob}</td>

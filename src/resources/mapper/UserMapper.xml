@@ -47,9 +47,11 @@
     </select>
 
     <select id="findByLogin" resultType="User" resultMap="userResult">
-        select *
-        from users
-        where login = #{login}
+        select u.id, u.login, u.password, u.name, u.dob, r.id as role_id, r.role_name
+        from users u
+                 left join users_roles ur on u.id = ur.user_id
+                 left join roles r on r.id = ur.role_id
+        where u.login = #{login}
     </select>
     <select id="readNumberOfRoles" resultType="int">
         select count(#{id})

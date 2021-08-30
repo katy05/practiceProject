@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="myTag" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -31,10 +33,12 @@
     <%--    <c:set var="thisIsHomePage" value="selectedMenuItem" scope="request"/>--%>
     <%--    <c:set var="thisIsUserListPage" value="" scope="request"/>--%>
     <%--    <jsp:include page="header.jsp"/>--%>
-    <myTag:header
+        <sec:authentication property="principal" var="authUser"/>
+
+        <myTag:header
             thisIsHomePage="selectedMenuItem"
             thisIsUserTablePage="false"
-            roles="${roles}"
+            roles="${authUser.authorities}"
     />
 
     <div class="content">
@@ -45,7 +49,7 @@
                 ${login},
 
                     <c:forEach var="role" items="${roles}">${role.name} </c:forEach>
-            <fmt:message key="label.welcome.text"/> </span>
+            <spring:message code="label.welcome.text"/> </span>
         </div>
     </div>
 

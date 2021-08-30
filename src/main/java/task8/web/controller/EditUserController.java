@@ -2,10 +2,12 @@ package task8.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import task8.config.PasswordEncoder;
 import task8.domain.Role;
 import task8.domain.User;
 import task8.service.AdminService;
@@ -23,7 +25,11 @@ import java.util.List;
 public class EditUserController {
     @Autowired
     private AdminService adminService;
+    @Autowired
     private Validator validator;
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     @Autowired
     @Qualifier("editUserValidator")
     private EditUserValidator editUserValidator;
@@ -101,7 +107,7 @@ public class EditUserController {
 
         List<Role> userRoles = user.getRoles();
 
-        String newPassword = user.getPassword().trim();
+        String newPassword = passwordEncoder.encode(user.getPassword());
         String newLogin = user.getLogin();
         String newDob = user.getDob();
         String newEmail = user.getEmail();
@@ -137,11 +143,11 @@ public class EditUserController {
     @ModelAttribute("allRoles")
     public List<Role> getAllRoles() {
         List<Role> allRoles = new ArrayList<>();
-        allRoles.add(new Role(1, "root"));
-        allRoles.add(new Role(2, "user"));
-        allRoles.add(new Role(3, "manager"));
-        allRoles.add(new Role(4, "developer"));
-        allRoles.add(new Role(5, "seo"));
+        allRoles.add(new Role(1, "ROLE_ROOT"));
+        allRoles.add(new Role(2, "ROLE_USER"));
+        allRoles.add(new Role(3, "ROLE_MANAGER"));
+        allRoles.add(new Role(4, "ROLE_DEVELOPER"));
+        allRoles.add(new Role(5, "ROLE_SEO"));
         return allRoles;
     }
 }

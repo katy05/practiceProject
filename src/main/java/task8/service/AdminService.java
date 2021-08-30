@@ -19,5 +19,6 @@ public interface AdminService {
     User checkLoginAndPassword(String login, String password) throws SQLException;
 
     Integer readMaxId() throws SQLException;
+    User findByLogin(String login);
 
 }

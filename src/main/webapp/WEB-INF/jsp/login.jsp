@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Подоприго Екатерина
@@ -11,8 +12,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:url var="auth" value="/auth.jhtml"/>
-<fmt:setLocale value="${lang}"/>
-<fmt:setBundle basename="lang.messages"/>
+
 <html>
 <head>
     <title><fmt:message key="label.welcome"/></title>
@@ -23,8 +23,8 @@
     <link href="${pageContext.servletContext.contextPath}/style/failedField.css" rel="stylesheet" type="text/css">
     <%--    </c:if>--%>
 </head>
-<fmt:message key="label.login" var="i18nLogin"/>
-<fmt:message key="label.password" var="i18nPassword"/>
+<spring:message code="label.login" var="i18nLogin"/>
+<spring:message code="label.password" var="i18nPassword"/>
 <body>
 <div class="session">
     <div class="left">
@@ -34,13 +34,12 @@
     </div>
 
 
-    <form:form method="post" action="${auth}" class="log-in" autocomplete="off" modelAttribute="incomingUser">
-        <h4><fmt:message key="label.welcome"/></h4>
+    <form method="post" action="/login" class="log-in">
+        <h4><spring:message code="label.welcome"/></h4>
         <div class="floating-label">
-            <form:input name="login" placeholder="${i18nLogin}" id="login" autocomplete="off" value="${failedLogin}"
+            <input name="login" placeholder="${i18nLogin}" id="login" autocomplete="off" value="${failedLogin}"
                         path="login" cssErrorClass="inputFailed"/>
-            <label for="login"><fmt:message key="label.login"/>: </label>
-            <form:errors path="login" cssClass="failedText"/>
+            <label for="login"><spring:message code="label.login"/>: </label>
 
             <div class="icon">
                 <?xml version="1.0" encoding="UTF-8"?>
@@ -60,11 +59,12 @@
             </div>
         </div>
         <div class="floating-label">
-            <form:input placeholder="${i18nPassword}" type="password" name="password" id="password" autocomplete="off"
+            <input placeholder="${i18nPassword}" type="password" name="password" id="password"
                         path="password" cssErrorClass="inputFailed"/>
-            <label for="password"><fmt:message key="label.password"/>:</label>
-            <form:errors path="password" cssClass="failedText"/>
-
+            <label for="password"><spring:message code="label.password"/>:</label>
+           <c:if test="${param.authFailed==true}">
+            <div class="failedText"><spring:message code="loginOrPassword.wrong"/></div>
+            </c:if>
             <div class="icon">
 
                 <?xml version="1.0" encoding="UTF-8"?>
@@ -83,15 +83,15 @@
         <%--        <div style="display: none" class="failedText">--%>
         <%--            Неправильный логин или пароль--%>
         <%--        </div>--%>
-        <button type="submit"><fmt:message key="label.sign.in"/></button>
-    </form:form>
+        <button type="submit"><spring:message code="label.sign.in"/></button>
+    </form>
 
 
 </div>
 
 <div class="languages" style="position: absolute">
-    <a href="?lang=ru"><fmt:message key="label.lang.ru"/> </a>
-    <a href="?lang=en"><fmt:message key="label.lang.en"/> </a>
+    <a href="?lang=ru"><spring:message code="label.lang.ru"/> </a>
+    <a href="?lang=en"><spring:message code="label.lang.en"/> </a>
 </div>
 </body>
 

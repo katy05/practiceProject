@@ -23,6 +23,7 @@ public class AdminServiceImpl implements AdminService {
         userDao.createRole(userDao.findByLogin(user.getLogin()).getId(), user.getRoles());
     }
 
+
     @Override
     public User read(int id) throws SQLException {
         return userDao.read(id);
@@ -51,7 +52,10 @@ public class AdminServiceImpl implements AdminService {
     public User checkLoginAndPassword(String login, String password) throws SQLException {
         return userDao.findByLoginAndPassword(login, password);
     }
-
+    @Override
+    public User findByLogin(String login){
+        return userDao.findByLogin(login);
+    }
 
     @Override
     public Integer readMaxId() throws SQLException {

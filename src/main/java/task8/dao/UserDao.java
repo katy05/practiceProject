@@ -18,7 +18,7 @@ public interface UserDao {
     void update(User user) throws SQLException;
     void delete(int id) throws SQLException;
     List<User> findAll() throws SQLException;
-    User findByLogin(String login) throws SQLException;
+    User findByLogin(String login);
     ResultSet findUserRole(int id) throws SQLException;
     User findByLoginAndPassword(String login, String password) throws SQLException;
     ResultSet readNumberOfRoles() throws SQLException;
